@@ -70,7 +70,7 @@
  <script>
 function myFunction() {
      try {
-            webkit.messageHandlers.validationCallback.postMessage("Hello from JavaScript");
+            webkit.messageHandlers.validationCallback.postMessage(true);
     } catch(err) {
             PVValidationHandler.validationCallback(true)
     }
