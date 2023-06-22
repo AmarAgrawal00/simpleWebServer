@@ -1,31 +1,34 @@
 <html>
-​
+
 <head>
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-​
+
         html {
             scroll-behavior: smooth;
         }
-​
+
         * {
             font-family: 'Roboto', sans-serif;
         }
-​
+
         body {
             margin: 0;
-​
+
         }
-​
+
         .container {
             margin: 0 auto;
             max-width: 760px;
             padding: 24px 16px;
             color: #333333;
         }
-​
+
         .link {
             color: #5F259F;
             text-decoration: underline;
@@ -34,26 +37,26 @@
             margin: 1rem 0;
             cursor: pointer;
         }
-​
+
         p {
             margin: 1rem 0;
             font-size: 14px;
         }
-​
+
         li {
             font-size: 14px;
         }
-​
+
         h4{
             margin: 1rem 0;
             font-size: 14px;
             font-weight: 500;
         }
-​
+
         .highlight-text {
             color: #5F259F;
         }
-​
+
         .bottom-toast {
             position: fixed;
             bottom: 16px;
@@ -70,7 +73,7 @@
             max-width: calc(760px - 64px);
             font-size: 14px;
         }
-​
+
         .scroll-btn {
             letter-spacing: 0.0125em;
             text-transform: uppercase;
@@ -81,7 +84,7 @@
         }
     </style>
 </head>
-​
+
 <body>
     <div class="container">
         <div class="bottom-toast" id="bottom-toast">
@@ -137,14 +140,14 @@
         </p>
     </div>
 </body>
-​
-​
+
+
 <script>
     window.addEventListener('load', toggleBottomToast);
     window.addEventListener('scroll', debounce(toggleBottomToast, 100));
     window.addEventListener('resize', debounce(toggleBottomToast, 100));
     let body = document.body;
-​
+
     function debounce(func, timeout = 300) {
         let timer;
         return (...args) => {
@@ -152,7 +155,7 @@
             timer = setTimeout(() => { func.apply(this, args); }, timeout);
         };
     }
-​
+
     function toggleBottomToast() {
         if (body.clientHeight + window.scrollY >= body.scrollHeight) {
             document.getElementById('bottom-toast').style.display = 'none';
@@ -163,8 +166,9 @@
     }
     function scrollToBottom() {
         window.scrollTo(0, body.scrollHeight);
+        PVValidationHandler.validationCallback(true);
     }
-​
+
     const getOS = () => {
         const userAgent = window.navigator.userAgent.toLowerCase(),
             macosPlatforms = /(macintosh|macintel|macppc|mac68k|macos)/i,
@@ -184,7 +188,7 @@
         }
         return os;
     };
-​
+
     function openPdf(type) {
         let URL;
         switch ('cardCardMemberAgreement') {
@@ -194,6 +198,7 @@
         }
         const OS = getOS();
         if (OS?.toUpperCase() === "ANDROID") {
+            // console.log('android');
             try {
                 let data = { 'url': URL, 'isExternal': true }
                 JsHandler.openURL(window.btoa(JSON.stringify(data)));
@@ -201,13 +206,113 @@
                 window.open(`${URL}`);
             }
         } else if (OS?.toUpperCase() == "IOS") {
-            window.location.replace(`${URL}`);
+            console.log('IOS');
+            window.location.replace(`phonepe://pw?url=${URL}&isExternal=1`);
             e.preventDefault();
         } else {
-            window.open(`${URL}`);
+            console.log('WEB')
+            JsHandler.openURL(window.btoa(JSON.stringify(data)));
+            // window.open(`${URL}`);
         }
     }
-​
+
 </script>
-​
+
 </html>
+
+
+
+<!-- 
+<div>
+    <p class="c9"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 818.92px; height: 80.20px;"><img
+                alt="Axis Header Pathway- Thick" src="images/image1.png"
+                style="width: 818.92px; height: 80.20px; margin-left: -0.00px; margin-top: -0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+</div>
+<p class="c9 c8 c10"><span class="c5"></span></p>
+<p class="c9 c8 c10"><span class="c5"></span></p>
+<p class="c9 c8"><span class="c5">T&amp;Cs to be incorporated during the application flow:</span></p>
+<p class="c7"><span class="c5"></span></p>
+<ol class="c2 lst-kix_list_1-0 start" start="1">
+    <li class="c4 li-bullet-0"><span class="c11 c1">Confidential&nbsp;information</span></li>
+</ol>
+<p class="c9 c8 c13" id="h.gjdgxs"><span class="c5">I hereby expressly consent to and authorize
+        the&nbsp;Bank&nbsp;(whether acting by itself or through any of its service providers, and whether in
+        automated manner or otherwise), to collect, store and process my application details, personal data and
+        sensitive information about me, information, papers and data relating to know your customer
+        (KYC),&nbsp;credit&nbsp;information, and any other information about me/pertaining to me or not as may be
+        deemed relevant by the&nbsp;Bank&nbsp;(collectively, &ldquo;Information&rdquo;)</span></p>
+<p class="c7"><span class="c5"></span></p>
+<p class="c7"><span class="c5"></span></p>
+<ol class="c2 lst-kix_list_1-0" start="2">
+    <li class="c4 li-bullet-0"><span class="c11 c8 c1">Explicit Consent</span></li>
+</ol>
+<p class="c13 c19"><span class="c8">I have read and hereby fully accept the&nbsp;</span><span
+        class="c12 c8">Card&nbsp;Member Agreement,&nbsp;Credit&nbsp;Authorization Statement</span><span
+        class="c8">&nbsp;and&nbsp;</span><span class="c8 c12">Most Important Terms and conditions</span><span
+        class="c8">&nbsp;of&nbsp;Axis&nbsp;Bank&nbsp;(&quot;Bank&quot;).&nbsp;I expressly consent&nbsp;Bank&nbsp;to
+        share and disclose the Information to&nbsp;(</span><span class="c3">partner name</span><span
+        class="c8">),&nbsp;service providers, consultants,&nbsp;credit&nbsp;information companies, information
+        utilities, other&nbsp;banks and financial institutions, affiliates, group companies, subsidiaries,
+        regulators, investigating agencies, judicial, quasi-judicial and statutory authorities, or to other
+        persons/institutions/entities as may be necessary in connection with the contractual or legal requirements
+        or in the legitimate interests of the&nbsp;Bank&nbsp;or as per the consent, undertake to process information
+        including by way of storing, structuring, organizing, reproducing, copying, using, profiling, etc. as may be
+        deemed fit by the&nbsp;Bank&nbsp;and for the purposes of&nbsp;credit&nbsp;appraisal, fraud detection,
+        anti-money laundering obligations, for entering into contract, for direct marketing, for cross selling, for
+        developing&nbsp;credit&nbsp;scoring models and business strategies, for monitoring, for evaluating and
+        improving the quality of services and products, or for any purposes as the&nbsp;Bank&nbsp;may deem fit. I
+        expressly agree to the&nbsp;Bank, its service providers, agents and/or its affiliates and&nbsp;(</span><span
+        class="c3">partner name</span><span class="c5 c8">),&nbsp;for using the Information and for marketing,
+        promotion and cross-selling to me their various products and services of the&nbsp;Bank&nbsp;from time to
+        time via telephone, SMS and/or email</span></p>
+<ol class="c2 lst-kix_list_1-0" start="3">
+    <li class="c6 li-bullet-0"><span class="c11 c1">Over Limit Consent </span></li>
+</ol>
+<p class="c13 c18"><span class="c5">I expressly&nbsp;consent to and authorise&nbsp;Axis&nbsp;Bank&nbsp;to provide
+        an&nbsp;overlimit transaction facility on my&nbsp;card&nbsp;as per&nbsp;Axis&nbsp;Bank&nbsp;internal
+        policies and other terms and conditions</span></p>
+<ol class="c2 lst-kix_list_1-0" start="4">
+    <li class="c13 c8 c15 li-bullet-0"><span class="c1 c11">Connected lending T&amp;C</span></li>
+</ol>
+<p class="c13 c8 c16"><span class="c5 c8">I am&nbsp;not&nbsp;a senior officer or relative of a director/senior
+        officer of Axis Bank and&nbsp;I am&nbsp;not&nbsp;a director (trustee) or relative of a director (trustee) of
+        any other bank/subsidiary of any bank (mutual funds/venture capital funds set up by banks)</span></p>
+<ol class="c2 lst-kix_list_1-0" start="5">
+    <li class="c6 li-bullet-0"><span class="c1">Disclosure of fees &amp; charge</span><span class="c5">s-This should
+            clearly indicate Annual Fees, Joining Fees, Interest Rate and link to view rest of the charges. Eg
+            (suggestive): </span></li>
+</ol>
+<p class="c13 c14"><span>I have read and understood that the&nbsp;card&nbsp;has a Joining Fees of Rs. xxx/- + GST,
+        Annual Fees of Rs. xxx/- +GST and interest charges of x.xx% per month and&nbsp;other charges(hyperlink other
+        charges to -&nbsp;</span><span><a class="c17"
+            href="https://www.google.com/url?q=https://ind01.safelinks.protection.outlook.com/?url%3Dhttp%253A%252F%252Fwww.axisbank.com%252Fccsoc%26data%3D05%257C01%257CGarima3.Sharma%2540axisbank.com%257C666587c095b64c5cd38c08da5b209b38%257C2d538e6436c741bc8b7d4d804956e957%257C0%257C0%257C637922492848838165%257CUnknown%257CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%253D%257C3000%257C%257C%257C%26sdata%3DGWOR9uFXQMyH9avSYh3Pkj9OB5ZgHBtttgVB4ldlj4M%253D%26reserved%3D0&amp;sa=D&amp;source=editors&amp;ust=1686059619264828&amp;usg=AOvVaw3_rilHkSuXprhE5bvFecMO">www.axisbank.com/ccsoc</a></span><span
+        class="c5">, pdf document titled key fact sheet attached for reference). I hereby&nbsp;expressly&nbsp;agree
+        to the issuance&nbsp;and activation&nbsp;of this card&nbsp;by way of One-Time Password (OTP) authentication
+        if needed.</span></p>
+        <p class="c13 c14"><span>I have read and understood that the&nbsp;card&nbsp;has a Joining Fees of Rs. xxx/- + GST,
+            Annual Fees of Rs. xxx/- +GST and interest charges of x.xx% per month and&nbsp;other charges(hyperlink other
+            charges to -&nbsp;</span><span><a class="c17"
+                href="https://www.google.com/url?q=https://ind01.safelinks.protection.outlook.com/?url%3Dhttp%253A%252F%252Fwww.axisbank.com%252Fccsoc%26data%3D05%257C01%257CGarima3.Sharma%2540axisbank.com%257C666587c095b64c5cd38c08da5b209b38%257C2d538e6436c741bc8b7d4d804956e957%257C0%257C0%257C637922492848838165%257CUnknown%257CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%253D%257C3000%257C%257C%257C%26sdata%3DGWOR9uFXQMyH9avSYh3Pkj9OB5ZgHBtttgVB4ldlj4M%253D%26reserved%3D0&amp;sa=D&amp;source=editors&amp;ust=1686059619264828&amp;usg=AOvVaw3_rilHkSuXprhE5bvFecMO">www.axisbank.com/ccsoc</a></span><span
+            class="c5">, pdf document titled key fact sheet attached for reference). I hereby&nbsp;expressly&nbsp;agree
+            to the issuance&nbsp;and activation&nbsp;of this card&nbsp;by way of One-Time Password (OTP) authentication
+            if needed.</span></p>   <p class="c13 c14"><span>I have read and understood that the&nbsp;card&nbsp;has a Joining Fees of Rs. xxx/- + GST,
+                Annual Fees of Rs. xxx/- +GST and interest charges of x.xx% per month and&nbsp;other charges(hyperlink other
+                charges to -&nbsp;</span><span><a class="c17"
+                    href="https://www.google.com/url?q=https://ind01.safelinks.protection.outlook.com/?url%3Dhttp%253A%252F%252Fwww.axisbank.com%252Fccsoc%26data%3D05%257C01%257CGarima3.Sharma%2540axisbank.com%257C666587c095b64c5cd38c08da5b209b38%257C2d538e6436c741bc8b7d4d804956e957%257C0%257C0%257C637922492848838165%257CUnknown%257CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%253D%257C3000%257C%257C%257C%26sdata%3DGWOR9uFXQMyH9avSYh3Pkj9OB5ZgHBtttgVB4ldlj4M%253D%26reserved%3D0&amp;sa=D&amp;source=editors&amp;ust=1686059619264828&amp;usg=AOvVaw3_rilHkSuXprhE5bvFecMO">www.axisbank.com/ccsoc</a></span><span
+                class="c5">, pdf document titled key fact sheet attached for reference). I hereby&nbsp;expressly&nbsp;agree
+                to the issuance&nbsp;and activation&nbsp;of this card&nbsp;by way of One-Time Password (OTP) authentication
+                if needed.</span></p>   <p class="c13 c14"><span>I have read and understood that the&nbsp;card&nbsp;has a Joining Fees of Rs. xxx/- + GST,
+                    Annual Fees of Rs. xxx/- +GST and interest charges of x.xx% per month and&nbsp;other charges(hyperlink other
+                    charges to -&nbsp;</span><span><a class="c17"
+                        href="https://www.google.com/url?q=https://ind01.safelinks.protection.outlook.com/?url%3Dhttp%253A%252F%252Fwww.axisbank.com%252Fccsoc%26data%3D05%257C01%257CGarima3.Sharma%2540axisbank.com%257C666587c095b64c5cd38c08da5b209b38%257C2d538e6436c741bc8b7d4d804956e957%257C0%257C0%257C637922492848838165%257CUnknown%257CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%253D%257C3000%257C%257C%257C%26sdata%3DGWOR9uFXQMyH9avSYh3Pkj9OB5ZgHBtttgVB4ldlj4M%253D%26reserved%3D0&amp;sa=D&amp;source=editors&amp;ust=1686059619264828&amp;usg=AOvVaw3_rilHkSuXprhE5bvFecMO">www.axisbank.com/ccsoc</a></span><span
+                    class="c5">, pdf document titled key fact sheet attached for reference). I hereby&nbsp;expressly&nbsp;agree
+                    to the issuance&nbsp;and activation&nbsp;of this card&nbsp;by way of One-Time Password (OTP) authentication
+                    if needed.</span></p>
+< -->
+
+
+<!-- $('.phonepe-app-ext-TwoWheelerPackagePolicy').click(function() {
+
+}); -->
