@@ -158,6 +158,7 @@
 
     function toggleBottomToast() {
         if (body.clientHeight + window.scrollY >= body.scrollHeight) {
+              console.log("scrolled to bottom called "+ body.clientHeight+" " + window.scrollY + " " + body.scrollHeight);
             document.getElementById('bottom-toast').style.display = 'none';
             PVValidationHandler.validationCallback(true);
         } else {
@@ -165,6 +166,7 @@
         }
     }
     function scrollToBottom() {
+        console.log("scrolled to bottom called");
         window.scrollTo(0, body.scrollHeight);
         PVValidationHandler.validationCallback(true);
     }
