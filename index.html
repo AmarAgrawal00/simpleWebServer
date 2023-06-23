@@ -267,7 +267,7 @@
 
 
 <script>
-    window.addEventListener('load', toggleBottomToast);
+    window.addEventListener('load', debounce(toggleBottomToast));
     window.addEventListener('scroll', debounce(toggleBottomToast, 100));
     window.addEventListener('resize', debounce(toggleBottomToast, 100));
     let body = document.body;
