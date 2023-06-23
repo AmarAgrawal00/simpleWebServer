@@ -160,8 +160,8 @@
     }
 
     function toggleBottomToast() {
-        if (body.clientHeight + window.scrollY >= body.scrollHeight) {
-            document.getElementById('dummy').innerHTML = `${body.clientHeight}, ${window.scrollY}, ${body.scrollHeight}`
+        if (window.innerHeight + window.scrollY >= body.scrollHeight) {
+            document.getElementById('dummy').innerHTML = `${window.innerHeight}, ${window.scrollY}, ${body.scrollHeight}`
             console.log("scrolled to bottom called "+ body.clientHeight+" " + window.scrollY + " " + body.scrollHeight);
             document.getElementById('bottom-toast').style.display = 'none';
             PVValidationHandler.validationCallback(true);
