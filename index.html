@@ -94,7 +94,7 @@
             <div class="scroll-btn" onclick="scrollToBottom()"> Scroll to end</div>
         </div>
         <!-- <button onclick="onClick()">click</button> -->
-<!--         <p>I have read and hereby fully accept the :</p> -->
+        <p>I have read and hereby fully accept the :</p>
         <div class="link" onclick="openPdf('cardCardMemberAgreement')">CarCard member agreement (PDF)</div>
         <div class="link" onclick="openPdf('cardCardMemberAgreement')">Credit card authorisation statement</div>
         <div class="link" onclick="openPdf('cardCardMemberAgreement')">Most Important Terms and Conditions (PDF)</div>
@@ -281,8 +281,8 @@
     }
 
     function toggleBottomToast() {
-        if (window.innerHeight + window.scrollY >= body.scrollHeight) {
-            document.getElementById('dummy').innerHTML = `${window.innerHeight}, ${window.scrollY}, ${body.scrollHeight}`
+        if (PVValidationHandler.getWinHeight() + window.scrollY >= body.scrollHeight) {
+            document.getElementById('dummy').innerHTML = `${PVValidationHandler.getWinHeight()}, ${window.scrollY}, ${body.scrollHeight}`
             console.log("scrolled to bottom called "+ body.clientHeight+" " + window.scrollY + " " + body.scrollHeight);
             document.getElementById('bottom-toast').style.display = 'none';
             PVValidationHandler.validationCallback(true);
